@@ -18,6 +18,7 @@ test("Login Test", async () => {
     await Login.gotoLoginPage("https://thinking-tester-contact-list.herokuapp.com/")
     await Login.login("dummyuser@du.com", "dummydummy")
     await ContactList.addNewContact()
+    await page.waitForTimeout(1000)
     await ContactFormObj.fillContactForm(inputData[0], 
                                             inputData[1], 
                                             inputData[2], 
@@ -29,6 +30,7 @@ test("Login Test", async () => {
                                             inputData[8], 
                                             inputData[9],
                                             inputData[10])
+    await ContactFormObj.submitForm()
     await page.waitForTimeout(3000)
 })
 
@@ -36,13 +38,8 @@ test("Check Table Data", async () => {
     console.log(await page.url())
     const table = await page.locator("#myTable")
     const cols = await table.locator("thead tr th")
-    //let numberOfCols = cols.count()
     const rows = await table.locator("tr")
-    //let numberOfRows = rows.count()
-    const matchedRow = await rows.filter({
-        has: page.locator("tr"),
-        hasText: "Test"
-    })
-    await console.log(matchedRow)
-    //await console.log(matchedRow.allTextContents())
+    console.log(await cols.allTextContents())
+    console.log(await rows.count())
+
 })

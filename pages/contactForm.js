@@ -26,12 +26,13 @@ exports.ContactForm = class ContactForm{
         await this.street1.fill(street1)
         await this.street2.fill(street2)
         await this.city.fill(city)
-        await this.firstName.fill(firstName)
         await this.stateProvince.fill(stateProvince)
         await this.postalCode.fill(postalCode)
         await this.country.fill(country)
-        await this.submitButton.click()
     }
     
+    async submitForm(){
+        await this.submitButton.click()
+    }
      
 }
