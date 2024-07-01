@@ -41,5 +41,8 @@ test("Check Table Data", async () => {
     const rows = await table.locator("tr")
     console.log(await cols.allTextContents())
     console.log(await rows.count())
+    const matchedRows = await rows.filter({
+        hasText: "Test"
+    })
 
 })
